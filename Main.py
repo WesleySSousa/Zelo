@@ -1,4 +1,4 @@
-from flask import Flask,render_template, request, redirect,flash
+from flask import Flask,render_template, request, redirect,flash,session
 
 app = Flask(__name__)
 app.secret_key = 'MiauMiauGatinGatin'
@@ -8,16 +8,20 @@ Lista_Tarefas = []
 
 @app.route('/')
 def index():
+    tarefas = session.get('tarefas', [])
     return render_template('index.html', tarefas = Lista_Tarefas)
 
 
 @app.route('/adicionar', methods=['POST'])
 def adicionar():
     tarefa = request.form.get('tarefa')
+    tarefas = session.get('tarefas', [])
+
     if tarefa:
-        nomes_existentes = [t['nome'].lower() for t in Lista_Tarefas]
+        nomes_existentes = [t['nome'].lower() for t in tarefas]
         if tarefa.lower() not in nomes_existentes:
-            Lista_Tarefas.append({'nome': tarefa, 'feito': False})
+            tarefas.append({'nome': tarefa, 'feito': False})
+            session['tarefas'] = tarefas
         else:
             flash('Essa Tarefa já existe!')
     return redirect('/')
@@ -28,19 +32,17 @@ def tarefas():
     acao = request.form.get('acao')
     selecionadas = request.form.getlist('tarefas_selecionadas')
 
-    global Lista_Tarefas
-
+    tarefas = session.get('tarefas', [])
 
     if acao == 'excluir':
-        Lista_Tarefas = [
-            tarefa for tarefa in Lista_Tarefas
-            if tarefa['nome'] not in selecionadas
-        ]
+        tarefas = [t for t in tarefas if t['nome'] not in selecionadas]
     else:
-        for tarefa in Lista_Tarefas:
-            tarefa['feito'] = tarefa['nome'] in selecionadas
+        for t in tarefas:
+            t['feito'] = t['nome'] in selecionadas
 
+    session['tarefas'] = tarefas
     return redirect('/')
+
 
 
 if __name__ == '__main__':
