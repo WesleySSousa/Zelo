@@ -228,3 +228,50 @@ footer {
     transform: translateY(0px);
   }
 }
+
+@media screen and (max-width: 600px) {
+  header {
+    width: 100% !important;
+  }
+  main {
+    width: 100%;
+  }
+
+  #FormEnviaTarefa {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #FormEnviaTarefa input {
+    width: 100%;
+  }
+
+  #FormEnviaTarefa button {
+    width: 100%;
+    height: 40px;
+    left: -10px;
+    border-radius: 2px !important;
+  }
+
+  #Tarefas {
+    width: 100%;
+  }
+  #Tarefas li {
+    width: 100%;
+  }
+
+  #Tarefas ul {
+    width: 100% !important;
+    overflow-x: hidden;
+  }
+
+  #Tarefas button {
+    width: 100%;
+    height: 40px;
+    left: -10px;
+    border-radius: 2px !important;
+  }
+}
