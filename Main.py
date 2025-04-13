@@ -11,12 +11,17 @@ def index():
     tarefas = session.get('tarefas', [])
     return render_template('index.html', tarefas=tarefas)
 
+
 @app.route('/adicionar', methods=['POST'])
 def adicionar():
     tarefa = request.form.get('tarefa')
-    tarefas = session.get('tarefas', [])  # Pega a lista de tarefas da sessão
+    tarefas = session.get('tarefas', [])
 
-    if tarefa:
+    if not tarefa or not tarefa.strip():
+        flash('Digite uma tarefa!')
+    elif len(tarefa) > 120:
+        flash('Tarefa muito longa! Máximo de 120 caracteres.')
+    else:
         # Verifica se a tarefa já existe
         nomes_existentes = [t['nome'].lower() for t in tarefas]
         if tarefa.lower() not in nomes_existentes:
@@ -26,6 +31,7 @@ def adicionar():
             flash('Essa Tarefa já existe!')
 
     return redirect('/')
+
 
 @app.route('/tarefas', methods=['POST'])
 def tarefas():
