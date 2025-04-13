@@ -15,7 +15,6 @@ def index():
 def adicionar():
     tarefa = request.form.get('tarefa')
     if tarefa:
-        # Verifica se já existe uma tarefa com o mesmo nome (ignorando maiúsculas/minúsculas)
         nomes_existentes = [t['nome'].lower() for t in Lista_Tarefas]
         if tarefa.lower() not in nomes_existentes:
             Lista_Tarefas.append({'nome': tarefa, 'feito': False})
@@ -26,7 +25,7 @@ def adicionar():
 
 @app.route('/tarefas', methods=['POST'])
 def tarefas():
-    acao = request.form.get('acao')  # Vai ser 'excluir' se clicar no botão
+    acao = request.form.get('acao')
     selecionadas = request.form.getlist('tarefas_selecionadas')
 
     global Lista_Tarefas
@@ -38,7 +37,6 @@ def tarefas():
             if tarefa['nome'] not in selecionadas
         ]
     else:
-        # Submissão veio de checkbox (não tem 'acao')
         for tarefa in Lista_Tarefas:
             tarefa['feito'] = tarefa['nome'] in selecionadas
 

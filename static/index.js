@@ -14,7 +14,7 @@ function aplicarRiscoNosMarcados() {
   });
 }
 
-// Chamar ao carregar a página
+
 window.onload = aplicarRiscoNosMarcados;
 
 setTimeout(function () {
