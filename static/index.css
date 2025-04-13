@@ -166,13 +166,11 @@ main {
 }
 
 footer {
-  margin-top: 100px;
+  margin-top: 10px;
   color: whitesmoke;
   font-size: 15px;
   letter-spacing: 2px;
   width: 100%;
-  position: absolute;
-  bottom: 10px;
   text-align: center;
 }
 
