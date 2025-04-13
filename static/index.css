@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Oswald:wght@200..700&family=Shadows+Into+Light&family=Smooch+Sans:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Smooch Sans", sans-serif;
+  color: whitesmoke;
+}
+
+body {
+  background-color: rgb(8, 8, 8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 800px;
+}
+
+#AreaLogo {
+  letter-spacing: 10px;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#BtnMenu {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#BtnMenu:hover {
+  background-color: #181717;
+}
+
+#BtnMenu span {
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  transition: all ease 0.3s;
+}
+
+.AtivaMenu span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.AtivaMenu span:nth-child(2) {
+  opacity: 0;
+}
+
+.AtivaMenu span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+main {
+  margin-top: 100px;
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#FormEnviaTarefa input {
+  width: 600px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 0 10px;
+  color: whitesmoke;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+}
+
+#FormEnviaTarefa button {
+  width: 100px;
+  height: 40px;
+  background-color: #181717;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-left: 10px;
+  letter-spacing: 5px;
+  transition: all ease 0.3s;
+  position: relative;
+  padding: 0px 10px;
+}
+
+#FormEnviaTarefa button:hover {
+  background-color: #111111;
+  color: whitesmoke;
+}
+
+#Tarefas {
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#Tarefas li {
+  width: 700px;
+  min-height: 35px;
+  border: 1px solid #eee;
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  text-align: left !important;
+  text-transform: uppercase;
+  gap: 10px;
+  margin: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+#Tarefas button {
+  width: 250px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-left: 10px;
+  letter-spacing: 5px;
+  transition: all ease 0.3s;
+  position: relative;
+  border: none;
+  right: -480px;
+}
+
+footer {
+  margin-top: 100px;
+  color: whitesmoke;
+  font-size: 15px;
+  letter-spacing: 2px;
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+}
+
+#mensagens {
+  position: absolute;
+  top: 20px;
+  color: rgb(0, 0, 0) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 30px;
+  border: none;
+  width: 300px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: brown;
+  border-radius: 20px;
+  animation: aparecer 1s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  transition: transform 1s ease;
+}
+
+@keyframes aparecer {
+  0% {
+    transform: translateY(-200px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

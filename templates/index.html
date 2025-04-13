@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZELO</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,0,0&icon_names=app_registration"
+    />
+    <link
+      rel="shortcut icon"
+      href="/static/image/Icon.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div id="AreaLogo">
+        <div class="LogoImg">
+          <span class="material-symbols-outlined"> app_registration </span>
+        </div>
+        <div class="LogoTxt">
+          <h1>ZELO</h1>
+        </div>
+      </div>
+      <!---->
+      <div id="BtnMenu" class="">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+    <main>
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul id="mensagens">
+        {% for msg in messages %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+      <div id="FormEnviaTarefa">
+        <form action="/adicionar" method="post" autocomplete="off">
+          <input type="text" placeholder="Tarefa" name="tarefa" />
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+
+      <div id="Tarefas">
+        <form action="/tarefas" method="post">
+          <ul>
+            {% for tarefa in tarefas %}
+            <li style="list-style: none">
+              <input
+                type="checkbox"
+                name="tarefas_selecionadas"
+                value="{{ tarefa.nome }}"
+                {%
+                if
+                tarefa.feito
+                %}checked{%
+                endif
+                %}
+                onchange="this.form.submit()"
+              />
+              <span> {{ tarefa.nome }} </span>
+            </li>
+            {% endfor %}
+          </ul>
+
+          {% if tarefas %}
+          <button type="submit" name="acao" value="excluir">
+            Excluir Selecionado(s)
+          </button>
+          {% endif %}
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>© 2023 ZELO. Todos os direitos reservados.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+  </body>
+</html>
