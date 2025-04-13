@@ -129,6 +129,25 @@ main {
   gap: 10px;
 }
 
+#Tarefas ul {
+  max-height: 50vh; /* Altura máxima visível */
+  overflow-y: auto; /* Habilita rolagem vertical */
+  padding: 10px;
+}
+
+#Tarefas ul::-webkit-scrollbar {
+  width: 6px; /* largura da scrollbar */
+}
+
+#Tarefas ul::-webkit-scrollbar-thumb {
+  background-color: #888; /* cor do "botão" da scrollbar */
+  border-radius: 4px;
+}
+
+#Tarefas ul::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* cor do fundo da scrollbar */
+}
+
 #Tarefas li {
   width: 700px;
   min-height: 35px;
@@ -172,6 +191,11 @@ footer {
   letter-spacing: 2px;
   width: 100%;
   text-align: center;
+  position: fixed;
+  bottom: 10px;
+  z-index: 99;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
 }
 
 #mensagens {
