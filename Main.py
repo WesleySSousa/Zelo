@@ -7,7 +7,6 @@ Lista_Tarefas = []
 
 @app.route('/')
 def index():
-    # Verifica se a chave 'tarefas' existe na sessão, caso contrário, define uma lista vazia
     tarefas = session.get('tarefas', [])
     return render_template('index.html', tarefas=tarefas)
 
@@ -43,11 +42,11 @@ def tarefas():
     if acao == 'excluir':
         tarefas = [t for t in tarefas if t['nome'] not in selecionadas]
     else:
-        # Atualiza o estado da tarefa (feita ou não)
+
         for t in tarefas:
             t['feito'] = t['nome'] in selecionadas
 
-    session['tarefas'] = tarefas  # Atualiza a sessão com as novas mudanças
+    session['tarefas'] = tarefas
     return redirect('/')
 
 if __name__ == '__main__':
